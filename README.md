@@ -1,42 +1,6 @@
 # 🧠 Face Recognition Attendance System
 
-📍 Live Documentation: [View Project Docs](https://ajayanands.github.io/Face-Attendance/)
+👁️‍🗨️ Face Attendance AI 🎓
+Face Attendance AI is a real-time facial recognition system that marks attendance automatically using traditional computer vision. Built with OpenCV, face_recognition, and a lightweight Python backend, it’s optimized for offline use on low-spec machines — no GPU, no cloud required. Designed for schools, colleges, and offices, it’s a practical, ethical, and resource-efficient approach to modern attendance tracking.
 
----
-
-## 📸 Overview
-
-The **Face Recognition Attendance System** automates the process of marking attendance using facial recognition — replacing traditional methods like manual entry, ID cards, or biometric punch-ins. Built using Python, OpenCV, and simple local storage, it’s designed to run smoothly on low-end devices without requiring a GPU or cloud support.
-
-This project is ideal for:
-
-- Schools and colleges with limited hardware resources
-- Small-scale offices or organizations
-- Developers learning about practical computer vision applications
-
----
-
-## 🛠️ Features
-
-- 🎥 Real-time face detection and recognition using a webcam
-- 📝 Automatic CSV-based attendance logging with timestamp
-- 🧑‍💻 User-friendly UI built using Streamlit or Flask
-- 🧾 Admin interface for registration and report export
-- 🔐 Privacy-focused: runs completely offline (no cloud)
-
----
-
-## 🧰 Tech Stack
-
-| Component          | Description                          |
-|-------------------|--------------------------------------|
-| `Python`          | Core programming language            |
-| `OpenCV`          | Face detection and image processing  |
-| `face_recognition`| Face encoding and comparison         |
-| `Flask/Streamlit` | Web interface                        |
-| `CSV / SQLite`    | Attendance storage and export        |
-
----
-
-## 📁 Folder Structure
-
+📍 Live Site: 👉 https://ajayanands.github.io/Face-Attendance
