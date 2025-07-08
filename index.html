@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face Recognition Attendance - Docs</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #333;
+    }
+
+    h1 {
+      color: #64b5f6;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #aaa;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #64b5f6;
+    }
+
+    section {
+      background-color: #1e1e1e;
+      padding: 25px;
+      margin: 25px auto;
+      max-width: 850px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(100, 100, 255, 0.1);
+    }
+
+    section h2 {
+      color: #90caf9;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 6px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+    }
+    
+.image-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.image-grid img {
+  flex: 1 1 45%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.image-single {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.image-single img {
+  max-width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 15px;
+      background-color: #1e1e1e;
+      border-top: 1px solid #333;
+      font-size: 14px;
+      color: #888;
+    }
+
+    #scrollToTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      background-color: #64b5f6;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 14px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    #scrollToTopBtn:hover {
+      background-color: #2196f3;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Face Recognition Attendance Docs</h1>
+  <nav>
+    <a href="#intro">Introduction</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#code">Code</a>
+    <a href="#frontend">Frontend</a>
+    <a href="#ethics">Ethics</a>
+    <a href="#future">Future</a>
+  </nav>
+</header>
+
+<section id="intro">
+  <h2>Introduction</h2>
+  <p>
+    The <strong>Face Recognition Attendance System</strong> is designed to modernize the way attendance is tracked in schools, colleges, and workplaces. Instead of manually calling roll or relying on ID cards, this system uses facial recognition to automatically detect and log attendance. 
+  </p>
+  <p>
+    The standout feature of this system is its use of <strong>OpenCV-based traditional methods</strong> instead of modern deep learning solutions. This decision ensures that the system is lightweight, efficient, and capable of running on low-end machines without requiring expensive GPUs or cloud infrastructure. This makes it ideal for deployment in institutions with limited budgets.
+  </p>
+</section>
+
+<section id="workflow">
+  <h2>Workflow</h2>
+  <p>This system is built to be intuitive and efficient, following a streamlined process that is easy to understand:</p>
+  <ul>
+    <li><strong>User Registration:</strong> Users are registered into the system with their name, ID, and a captured image of their face.</li>
+    <li><strong>Live Video Capture:</strong> A webcam continuously captures live video.</li>
+    <li><strong>Face Detection:</strong> The system detects all faces in each frame using OpenCV's Haar cascade classifiers or HOG features.</li>
+    <li><strong>Face Recognition:</strong> The system compares detected faces with stored encodings and identifies matching users.</li>
+    <li><strong>Attendance Marking:</strong> Once a face is matched, attendance is automatically logged with the user's name and current timestamp.</li>
+    <li><strong>Admin Reports:</strong> An admin dashboard allows viewing, filtering, and exporting attendance data in CSV format.</li>
+  </ul>
+  <p>
+    Unlike cloud-based systems that require internet and high-end processing, this method is optimized to work entirely offline and on basic CPUs.
+  </p>
+</section>
+
+<section id="architecture">
+  <h2>System Architecture</h2>
+  <p>The system architecture has been carefully crafted to balance simplicity and effectiveness:</p>
+  <ul>
+    <li><strong>Camera:</strong> A standard 720p or higher webcam is used to capture real-time video.</li>
+    <li><strong>Processing:</strong> Python with OpenCV handles image processing and face detection in real-time.</li>
+    <li><strong>Recognition Engine:</strong> Face encodings are compared using the <code>face_recognition</code> library, which leverages HOG or CNN models for accuracy.</li>
+    <li><strong>Database:</strong> Attendance records are saved in a local CSV or SQLite database for easy access and portability.</li>
+    <li><strong>User Interface:</strong> A frontend built using Streamlit or Flask allows for interaction, user registration, and report generation.</li>
+  </ul>
+  <p>
+    This modular design ensures that each component can be updated independently, allowing for future scalability or feature integration.
+  </p>
+</section>
+
+<section id="code">
+  <h2>Sample Code</h2>
+  <p>Below is a concise Python script that demonstrates the face detection and attendance logging logic:</p>
+  <pre><code>import cv2
+import face_recognition
+from datetime import datetime
+
+def mark_attendance(name):
+    with open("Attendance.csv", "a") as f:
+        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        f.write(f"{name},{now}\n")
+
+known_encodings = [...]
+known_names = [...]
+cap = cv2.VideoCapture(0)
+
+while True:
+    ret, frame = cap.read()
+    rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    faces = face_recognition.face_locations(rgb)
+    encodings = face_recognition.face_encodings(rgb, faces)
+
+    for encoding, loc in zip(encodings, faces):
+        matches = face_recognition.compare_faces(known_encodings, encoding)
+        name = "Unknown"
+        if True in matches:
+            index = matches.index(True)
+            name = known_names[index]
+            mark_attendance(name)
+        cv2.rectangle(frame, (loc[3], loc[0]), (loc[1], loc[2]), (0, 255, 0), 2)
+        cv2.putText(frame, name, (loc[3], loc[0]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255,255,255), 2)
+
+    cv2.imshow('Face Attendance', frame)
+    if cv2.waitKey(1) == 27:
+        break
+
+cap.release()
+cv2.destroyAllWindows()</code></pre>
+</section>
+
+<section id="frontend">
+  <h2>Frontend (UI)</h2>
+  <p>
+    The user interface (UI) for the Face Recognition Attendance System is thoughtfully designed to be <strong>simple, accessible, and efficient</strong>, ensuring ease of use even for non-technical users like teachers or HR staff.
+  </p>
+  <p>
+    The entire frontend is developed using <strong>Python frameworks like Streamlit or Flask</strong>, avoiding bloated modern stacks that require heavy graphics processing. We’ve chosen this approach deliberately, to keep the system <strong>lightweight and GPU-independent</strong>, making it usable on <em>ordinary laptops or Raspberry Pi setups</em> where powerful GPUs are not available.
+  </p>
+
+  <p>
+    While many modern face detection systems require deep learning models that demand high-end GPUs—even within the camera hardware—this project uses traditional yet reliable OpenCV methods. Why? Because <strong>OpenCV is battle-tested, open-source, lightweight, and works smoothly on CPUs</strong>. This makes our solution highly adaptable for schools, colleges, or small businesses on a tight budget.
+  </p>
+
+  <ul>
+    <li><strong>User Registration Interface:</strong> A clean form allows students or employees to upload their photo and details (name, ID, department). The face is encoded and stored securely.</li>
+    <li><strong>Live Detection Feed:</strong> A real-time camera feed shows face tracking boxes using OpenCV, marking recognized individuals instantly.</li>
+    <li><strong>Attendance Dashboard:</strong> A digital register displays logs in CSV format with timestamps and names. Data can be exported or filtered easily.</li>
+    <li><strong>Admin Panel:</strong> Admins can manage users, delete records, and generate reports from a secure login page.</li>
+  </ul>
+
+  <p>
+    The interface design emphasizes <strong>clarity, speed, and low system resource consumption</strong>. It is responsive and fits both desktops and tablets. With minimal dependencies and no cloud processing, it offers full data control and privacy.
+  </p>
+
+  <!-- First row: 2 images -->
+  <div class="image-grid">
+    <figure>
+      <img src="images/main-page.png" alt="Main Page Screenshot" />
+      <figcaption style="text-align:center; margin-top:5px;">Main Attendance Dashboard</figcaption>
+    </figure>
+    <figure>
+      <img src="images/register-page.png" alt="Register Page Screenshot" />
+      <figcaption style="text-align:center; margin-top:5px;">User Registration Page</figcaption>
+    </figure>
+  </div>
+
+  <!-- Second row: single full-width image -->
+  <div class="image-single">
+    <figure>
+      <img src="images/image-prediction.png" alt="Image Prediction Screenshot" />
+      <figcaption style="text-align:center; margin-top:5px;">Live Face Detection and Prediction using OpenCV</figcaption>
+    </figure>
+  </div>
+
+  <p>
+    Overall, the frontend serves as a <strong>bridge between cutting-edge computer vision and real-world usability</strong>. It proves that powerful technology can still be friendly, lightweight, and deployable on everyday hardware—making it ideal for practical applications in education and office environments.
+  </p>
+</section>
+
+
+<section id="ethics">
+  <h2>Ethics & Privacy</h2>
+  <p>
+    Ethical considerations are a key part of this system’s design. Since facial data is biometric and personal, steps are taken to ensure full transparency and privacy:
+  </p>
+  <ul>
+    <li><strong>Offline-Only Processing:</strong> No internet or cloud is used. All face data stays local.</li>
+    <li><strong>Consent-Based Registration:</strong> Only registered users who provide explicit consent are included.</li>
+    <li><strong>Deletable Profiles:</strong> Admins can remove face encodings on request.</li>
+    <li><strong>No Third-Party APIs:</strong> The system does not rely on any external data processors or analytics providers.</li>
+  </ul>
+  <p>
+    These principles ensure that even in small-scale deployments, users feel safe and respected.
+  </p>
+</section>
+
+<section id="future">
+  <h2>Future Enhancements</h2>
+  <p>Here are some exciting ideas planned for upcoming versions of the system:</p>
+  <ul>
+    <li><strong>Voice Feedback:</strong> Add audio confirmation when attendance is marked.</li>
+    <li><strong>Multiple Camera Support:</strong> For covering large halls and classrooms.</li>
+    <li><strong>Mobile Integration:</strong> Allow attendance to be logged via smartphones with camera access.</li>
+    <li><strong>Attendance Analytics:</strong> Dashboards for patterns, trends, and heatmaps.</li>
+    <li><strong>Deep Learning Upgrade (Optional):</strong> For those with GPU availability, a deep learning backend will enhance accuracy.</li>
+  </ul>
+  <p>
+    Even with future upgrades, the system will retain its core value of being usable on low-cost, non-GPU hardware.
+  </p>
+</section>
+
+<button id="scrollToTopBtn" onclick="scrollToTop()">↑ Top</button>
+<script>
+  function scrollToTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+  window.onscroll = function () {
+    document.getElementById("scrollToTopBtn").style.display =
+      window.pageYOffset > 20 ? "block" : "none";
+  };
+</script>
+
+<footer>
+  <p>&copy; 2025 Ajay Anand S. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
